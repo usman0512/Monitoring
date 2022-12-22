@@ -12,23 +12,23 @@ export class Bulletin implements IBulletin {
     title: string;
 
     @ApiProperty()
-    @Prop()
+    @Prop({required:false})
     date: string;
     
     @ApiProperty()
-    @Prop()
+    @Prop({required:false})
     bulletinFrom: string;
     
     @ApiProperty()
-    @Prop()
+    @Prop({required:false})
     bulletinSemester: string;
     
     @ApiProperty()
-    @Prop()
+    @Prop({required:false})
     bulletinType: string;
 
     @ApiProperty()
-    @Prop()
+    @Prop({required:false})
     url: string;
 }
 export const BulletinSchema = SchemaFactory.createForClass(Bulletin);

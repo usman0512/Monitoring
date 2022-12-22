@@ -3,6 +3,7 @@ export interface IRecords {
     title: string;
     date: string;
     recordsFrom: string;
+    verifiedBy: string;
     recordsSemester: string;
     recordsType: string;
     url: string;

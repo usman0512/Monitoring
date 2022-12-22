@@ -9,26 +9,22 @@ export type AttendanceDocument = Attendance & Document;
 export class Attendance implements IAttendance{
     @ApiProperty()
     @Prop({required:true})
-    firstName: string;
-
-    @ApiProperty()
-    @Prop({required:true})
-    lastName: string;
+    studentName: string;
 
     @ApiProperty()
     @Prop({required:true})
     date: string;
     
     @ApiProperty()
-    @Prop({required:true})
-    eventName: string;
+    @Prop({required:false})
+    status: string;
 
     @ApiProperty()
-    @Prop({required:true})
-    amount: string;
+    @Prop({required:false})
+    remarks: string;
 
     @ApiProperty()
-    @Prop({required:true})
-    semester: string;
+    @Prop({required:false})
+    studentId: string;
 }
 export const AttendanceSchema = SchemaFactory.createForClass(Attendance);

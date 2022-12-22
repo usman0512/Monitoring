@@ -5,14 +5,14 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-    .setTitle('Autobytes example')
-    .setDescription('The Autobytes API description')
+    .setTitle('Monitoring example')
+    .setDescription('The Monitoring API description')
     .setVersion('1.0')
-    .addTag('Autobytes')
+    .addTag('Monitoring')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('Autobytes', app, document);
+  SwaggerModule.setup('Monitoring', app, document);
   app.enableCors({
     origin: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',

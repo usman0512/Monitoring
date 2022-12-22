@@ -5,7 +5,7 @@ export interface IUser {
     firstName: string;
     lastName: string;
     userType: string;
-    status?: string,
+    status?: string;
     idNumber: string;
     disabled?: boolean;
     refreshToken?: string;

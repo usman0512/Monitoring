@@ -1,28 +1,28 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import { Document } from 'mongoose';
-import { IStudents } from 'src/interfaces/students.interface';
+import { ICoordinator } from 'src/interfaces/coordinator.interface';
 
-export type StudentsDocument = Students & Document;
+export type CoordinatorDocument = Coordinator & Document;
 
 @Schema()
-export class Students implements IStudents {
+export class Coordinator implements ICoordinator {
+
+    @ApiProperty()
+    @Prop({ required: true })
+    firstName: string;
 
     @ApiProperty()
     @Prop({ required: true })
     lastName: string;
 
     @ApiProperty()
-    @Prop({ required: true })
-    firstName: string;
-    
-    @ApiProperty()
     @Prop({ required: false })
     middleName: string;
 
     @ApiProperty()
-    @Prop({ required: true })
-    idNumber: string;
+    @Prop({ required: false })
+    contact: string;
 
     @ApiProperty()
     @Prop({ required: false })
@@ -38,14 +38,10 @@ export class Students implements IStudents {
 
     @ApiProperty()
     @Prop({ required: false })
-    course: string;
-
-    @ApiProperty()
-    @Prop({ required: false })
     username: string;
 
     @ApiProperty()
     @Prop({ required: false })
     password: string;
 }
-export const StudentsSchema = SchemaFactory.createForClass(Students);
+export const CoordinatorSchema = SchemaFactory.createForClass(Coordinator);

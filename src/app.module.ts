@@ -26,6 +26,21 @@ import { MediaService } from './media/media.service';
 import { Students, StudentsSchema } from './schemas/students.schema';
 import { StudentsController } from './students/students.controller';
 import { StudentsService } from './students/students.service';
+import { Coordinator, CoordinatorSchema } from './schemas/coordinator.schema';
+import { CoordinatorController } from './coordinator/coordinators.controller';
+import { CoordinatorService } from './coordinator/coordinators.service';
+import { Enrollment, EnrollmentSchema } from './schemas/enrollment.schema';
+import { EnrollmentController } from './enrollment/enrollment.controller';
+import { EnrollmentService } from './enrollment/enrollment.service';
+import { Organization, OrganizationSchema } from './schemas/organization.schema';
+import { OrganizationController } from './organization/organization.controller';
+import { OrganizationService } from './organization/organization.service';
+import { Task, TaskSchema } from './schemas/task.schema';
+import { TaskController } from './task/task.controller';
+import { TaskService } from './task/task.service';
+import { TaskSubmitted, TaskSubmittedSchema } from './schemas/task-submitted.schema';
+import { TaskSubmittedController } from './task-submitted/task-submitted.controller';
+import { TaskSubmittedService } from './task-submitted/task-submitted.service';
 import { AuthModule } from './user/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './config/configuration';
@@ -57,16 +72,32 @@ import configuration from './config/configuration';
     },
     {
       name: Students.name, schema: StudentsSchema
-    },{
+    },
+    {
       name: User.name, schema: UserSchema
+    },
+    {
+      name: Coordinator.name, schema: CoordinatorSchema
+    },
+    {
+      name: Enrollment.name, schema: EnrollmentSchema
+    },
+    {
+      name: Organization.name, schema: OrganizationSchema
+    },
+    {
+      name: Task.name, schema: TaskSchema
+    },
+    {
+      name: TaskSubmitted.name, schema: TaskSubmittedSchema
     }
-  ]),
-    MongooseModule.forRoot('mongodb://localhost/autobytes', {
+    ]),
+    MongooseModule.forRoot('mongodb://localhost/monitoring', {
       useFindAndModify: false
     }),
     AuthModule
   ],
-  controllers: [AppController, AttendanceController, BulletinController, ClearanceController, RecordsController, ArchivedController, MediaController, StudentsController, UserController],
-  providers: [AppService, AttendanceService, BulletinService, ClearanceService, RecordsService, ArchivedService, MediaService, StudentsService, UserService]
+  controllers: [AppController, AttendanceController, BulletinController, ClearanceController, RecordsController, ArchivedController, MediaController, StudentsController, UserController, CoordinatorController, EnrollmentController, OrganizationController, TaskController, TaskSubmittedController],
+  providers: [AppService, AttendanceService, BulletinService, ClearanceService, RecordsService, ArchivedService, MediaService, StudentsService, UserService, CoordinatorService, EnrollmentService, OrganizationService, TaskService, TaskSubmittedService]
 })
 export class AppModule { }

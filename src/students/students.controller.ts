@@ -10,12 +10,12 @@ import { StudentsService } from './students.service';
 export class StudentsController {
   constructor(private studentsService: StudentsService) { }
 
-  @ApiBody({ type: [Students] })
-  @ApiOperation({ summary: 'Add new Students', operationId: 'AddStudents' })
-  @ApiResponse({ status: 200, type: [Students] })
+  @ApiBody({ type: Students })
+  @ApiOperation({ summary: 'Add new Student', operationId: 'AddStudent' })
+  @ApiResponse({ status: 200, type: Students })
   @Post('/create')
-  create(@Body() students: Students[]) {
-    return this.studentsService.create(students);
+  Add(@Body() student: Students) {
+    return this.studentsService.create(student);
   }
 
   @ApiOperation({ summary: 'Get all Students', operationId: 'GetStudents' })

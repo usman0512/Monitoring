@@ -20,6 +20,10 @@ export class Records {
 
     @ApiProperty()
     @Prop({required:true})
+    verifiedBy: string;
+
+    @ApiProperty()
+    @Prop({required:true})
     recordsSemester: string;
 
     @ApiProperty()

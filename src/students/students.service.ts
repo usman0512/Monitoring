@@ -6,7 +6,7 @@ import { Students, StudentsDocument } from 'src/schemas/students.schema';
 @Injectable()
 export class StudentsService {
   constructor(@InjectModel(Students.name) private studentsModel: Model<StudentsDocument>) { }
-  create(student: Students[]): Promise<Students[]> {
+  create(student: Students): Promise<Students> {
     return this.studentsModel.create(student);
   }
   async findAll(): Promise<Students[]> {

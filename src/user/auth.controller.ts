@@ -1,4 +1,5 @@
 import { JwtRefreshGuard } from './jwt.refresh.guard';
+import { IValidate } from 'src/interfaces/validateUser.interface';
 import { UserService } from './user.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { LocalAuthGuard } from './local.auth.guard';
@@ -10,6 +11,8 @@ import {
   Request,
   Body,
   Get,
+  Param,
+  Query,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -24,7 +27,7 @@ import {
   AccessTokenDto,
 } from './user.dto';
 import { User } from 'src/schemas/user.schema';
-
+import { ValidateUser } from 'src/schemas/validateUser.schema';
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -37,7 +40,7 @@ export class AuthController {
   @ApiResponse({ status: 200, type: User })
   @Post('/register')
   create(@Body() user: User) {
-    if (user.refreshToken == "auto bytes") {
+    if (user.refreshToken == "LNAC") {
       return this.authService.register({
         ...user, refreshToken: undefined
       });
@@ -110,5 +113,28 @@ export class AuthController {
       password: undefined,
       refreshToken: undefined,
     }
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @ApiOperation({
+    summary: 'validate user',
+    operationId: 'validateUser',
+  })
+  @ApiParam({
+    name: 'password',
+    required: true, type: 'string'
+  })
+  @ApiParam({
+    name: 'username',
+    required: true, type: 'string'
+  })
+  @Get([':username,:password'])
+  async validateUser(@Param() params: IValidate) {
+    const user = await this.authService.validateUser(params.username, params.password);
+    if (user) {
+    return true
+    }
+    return false
   }
 }

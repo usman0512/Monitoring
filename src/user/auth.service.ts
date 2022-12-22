@@ -4,7 +4,6 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { IUser } from '../interfaces/user.interface';
-import { User } from 'src/schemas/user.schema';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +14,11 @@ export class AuthService {
 
     async validateUser(username: string, pass: string): Promise<IUser> {
         const user = await this.userService.findByUsername(username);
+        console.log('username',username)
+        console.log('pass',pass)
         const passwordMatched = user && await bcrypt.compare(pass, user.password);
+        console.log('passwordMatched',passwordMatched)
+        console.log('ATS',user)
         if (passwordMatched && !user.disabled) {
             return user;
         }

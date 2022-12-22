@@ -35,6 +35,21 @@ var media_service_1 = require("./media/media.service");
 var students_schema_1 = require("./schemas/students.schema");
 var students_controller_1 = require("./students/students.controller");
 var students_service_1 = require("./students/students.service");
+var coordinator_schema_1 = require("./schemas/coordinator.schema");
+var coordinators_controller_1 = require("./coordinator/coordinators.controller");
+var coordinators_service_1 = require("./coordinator/coordinators.service");
+var enrollment_schema_1 = require("./schemas/enrollment.schema");
+var enrollment_controller_1 = require("./enrollment/enrollment.controller");
+var enrollment_service_1 = require("./enrollment/enrollment.service");
+var organization_schema_1 = require("./schemas/organization.schema");
+var organization_controller_1 = require("./organization/organization.controller");
+var organization_service_1 = require("./organization/organization.service");
+var task_schema_1 = require("./schemas/task.schema");
+var task_controller_1 = require("./task/task.controller");
+var task_service_1 = require("./task/task.service");
+var task_submitted_schema_1 = require("./schemas/task-submitted.schema");
+var task_submitted_controller_1 = require("./task-submitted/task-submitted.controller");
+var task_submitted_service_1 = require("./task-submitted/task-submitted.service");
 var auth_module_1 = require("./user/auth.module");
 var config_1 = require("@nestjs/config");
 var configuration_1 = require("./config/configuration");
@@ -69,17 +84,33 @@ var AppModule = /** @class */ (function () {
                     },
                     {
                         name: students_schema_1.Students.name, schema: students_schema_1.StudentsSchema
-                    }, {
+                    },
+                    {
                         name: user_schema_1.User.name, schema: user_schema_1.UserSchema
+                    },
+                    {
+                        name: coordinator_schema_1.Coordinator.name, schema: coordinator_schema_1.CoordinatorSchema
+                    },
+                    {
+                        name: enrollment_schema_1.Enrollment.name, schema: enrollment_schema_1.EnrollmentSchema
+                    },
+                    {
+                        name: organization_schema_1.Organization.name, schema: organization_schema_1.OrganizationSchema
+                    },
+                    {
+                        name: task_schema_1.Task.name, schema: task_schema_1.TaskSchema
+                    },
+                    {
+                        name: task_submitted_schema_1.TaskSubmitted.name, schema: task_submitted_schema_1.TaskSubmittedSchema
                     }
                 ]),
-                mongoose_1.MongooseModule.forRoot('mongodb://localhost/autobytes', {
+                mongoose_1.MongooseModule.forRoot('mongodb://localhost/monitoring', {
                     useFindAndModify: false
                 }),
                 auth_module_1.AuthModule
             ],
-            controllers: [app_controller_1.AppController, attendance_controller_1.AttendanceController, bulletin_controller_1.BulletinController, clearance_controller_1.ClearanceController, records_controller_1.RecordsController, archived_controller_1.ArchivedController, media_controller_1.MediaController, students_controller_1.StudentsController, user_controller_1.UserController],
-            providers: [app_service_1.AppService, attendance_service_1.AttendanceService, bulletin_service_1.BulletinService, clearance_service_1.ClearanceService, records_service_1.RecordsService, archived_service_1.ArchivedService, media_service_1.MediaService, students_service_1.StudentsService, user_service_1.UserService]
+            controllers: [app_controller_1.AppController, attendance_controller_1.AttendanceController, bulletin_controller_1.BulletinController, clearance_controller_1.ClearanceController, records_controller_1.RecordsController, archived_controller_1.ArchivedController, media_controller_1.MediaController, students_controller_1.StudentsController, user_controller_1.UserController, coordinators_controller_1.CoordinatorController, enrollment_controller_1.EnrollmentController, organization_controller_1.OrganizationController, task_controller_1.TaskController, task_submitted_controller_1.TaskSubmittedController],
+            providers: [app_service_1.AppService, attendance_service_1.AttendanceService, bulletin_service_1.BulletinService, clearance_service_1.ClearanceService, records_service_1.RecordsService, archived_service_1.ArchivedService, media_service_1.MediaService, students_service_1.StudentsService, user_service_1.UserService, coordinators_service_1.CoordinatorService, enrollment_service_1.EnrollmentService, organization_service_1.OrganizationService, task_service_1.TaskService, task_submitted_service_1.TaskSubmittedService]
         })
     ], AppModule);
     return AppModule;

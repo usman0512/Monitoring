@@ -7,5 +7,4 @@ export interface IClearance {
     semester: string;
     idNumber?: string
     clear?: string;
-
 }
