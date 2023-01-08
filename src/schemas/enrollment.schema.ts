@@ -31,5 +31,9 @@ export class Enrollment implements IEnrollment {
     @ApiProperty()
     @Prop({ required: false })
     studentId: string;
+
+    @ApiProperty()
+    @Prop({ required: false })
+    organizationId: string;
 }
 export const EnrollmentSchema = SchemaFactory.createForClass(Enrollment);

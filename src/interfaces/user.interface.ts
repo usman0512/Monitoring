@@ -9,5 +9,5 @@ export interface IUser {
     idNumber: string;
     disabled?: boolean;
     refreshToken?: string;
-
+    url?: string;
 }

@@ -40,8 +40,12 @@ export class User implements IUser {
     @Prop({ required: true, default: false })
     disabled?: boolean;
 
-    @ApiProperty({required: false, example: "enable"})
-    @Prop({required: false})
+    @ApiProperty({ required: false, example: "enable" })
+    @Prop({ required: false })
     status?: string
+
+    @ApiProperty()
+    @Prop({ required: false })
+    url?: string
 }
 export const UserSchema = SchemaFactory.createForClass(User);

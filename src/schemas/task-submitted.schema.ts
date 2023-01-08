@@ -34,5 +34,13 @@ export class TaskSubmitted implements ITaskSubmitted {
     @ApiProperty()
     @Prop({ required: false })
     score: string;
+
+    @ApiProperty()
+    @Prop({ required: false })
+    studentName: string;
+
+    @ApiProperty()
+    @Prop({ required: false })
+    organizationId: string;
 }
 export const TaskSubmittedSchema = SchemaFactory.createForClass(TaskSubmitted);

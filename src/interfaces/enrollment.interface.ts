@@ -6,4 +6,5 @@ export interface IEnrollment {
     organization: string;
     coordinatorId?: string;
     studentId?: string;
+    organizationId?: string;
 }

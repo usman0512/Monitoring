@@ -5,4 +5,5 @@ export interface IAttendance {
     status?: string;
     remarks?: string;
     studentId?: string;
+    organizationId?: string;
 }

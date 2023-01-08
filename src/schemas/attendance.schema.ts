@@ -26,5 +26,9 @@ export class Attendance implements IAttendance{
     @ApiProperty()
     @Prop({required:false})
     studentId: string;
+
+    @ApiProperty()
+    @Prop({required:false})
+    organizationId: string;
 }
 export const AttendanceSchema = SchemaFactory.createForClass(Attendance);
